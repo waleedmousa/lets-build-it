@@ -1,0 +1,12 @@
+[
+ {"q": "How many days does a customer have to ask for a refund?", "accept": ["47", "forty-seven", "forty seven"], "topic": "Refunds"},
+ {"q": "Who has to approve a meeting that starts after 4 pm?", "accept": ["kernel"], "topic": "Kernel, the office dog"},
+ {"q": "What is the longest I can book a nap pod for?", "accept": ["25", "twenty-five", "twenty five"], "topic": "Nap pods"},
+ {"q": "When are we not allowed to deploy to production?", "accept": ["friday"], "topic": "Deploys"},
+ {"q": "How much is the yearly learning budget?", "accept": ["900"], "topic": "Learning budget"},
+ {"q": "Which day does everyone come to the office?", "accept": ["tuesday"], "topic": "Remote work"},
+ {"q": "A customer's package never arrived. How long do they wait before we reship it?", "accept": ["7", "seven"], "topic": "Lost packages"},
+ {"q": "How long is the warranty on the Forever Pot?", "accept": ["5", "five"], "topic": "Warranty"},
+ {"q": "What is the coffee machine called?", "accept": ["gradient"], "topic": "Coffee"},
+ {"q": "How much is the bonus for an on-call week?", "accept": ["150"], "topic": "On-call"}
+]
