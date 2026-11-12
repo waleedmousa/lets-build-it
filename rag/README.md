@@ -1,74 +1,86 @@
 # Chat with your own documents: RAG from scratch
 
-The code from the Runtime Explained short **"The New Intern"** (Let's Build It, EP 11).
+The code from the Runtime Explained short on RAG (Let's Build It, EP 11).
 
-RAG (retrieval-augmented generation) is an open-book exam. The model does not get smarter. Before it answers, we hand it the right pages.
+**The problem.** Ask a model about your own company and it either says "I don't know" or makes something up, because it never read your documents. Retraining it for every new file is slow and expensive.
 
-`rag.py` is the whole thing in about 30 lines and five steps. No framework and no vector database, so nothing is hidden.
+**The trick (RAG).** Before the model answers, find the right page and paste it into the question.
 
-| Step | In the code | In plain words |
-|---|---|---|
-| 1. Documents | `text = open("handbook.md")...` | The book the model has never read |
-| 2. Chunks | `chunks = ...` | Cut it into cards, one topic each (25 cards here) |
-| 3. Embeddings | `vectors = embed(chunks)` | Turn every card into numbers, so similar cards sit close together |
-| 4. Retrieve | `def retrieve(question, k=3)` | Turn the question into numbers too, grab the 3 closest cards |
-| 5. Answer | `def answer(question, k=3)` | Hand the model those cards and one rule: answer only from these |
+`rag.py` is the whole thing: **one file, 26 lines of code**, no framework, no vector database.
+
+## Build it
+
+You need Python 3.9 or newer and [Ollama](https://ollama.com) (free, runs on your own computer).
+
+```bash
+mkdir my-rag && cd my-rag          # 1. a folder
+# 2. put a document in it: handbook.md from this repo, or your own
+ollama pull llama3.2               # 3. the models
+ollama pull nomic-embed-text
+pip install ollama numpy           # 4. the libraries
+# 5. create rag.py (copy it from this repo, or type it along with the video)
+python rag.py
+```
+
+Then type a question at `Ask:`. Press Ctrl+C to stop.
+
+```
+Ask: What is the longest I can book a nap pod for?
+You can book a nap pod for a maximum of 25 minutes.
+Ask: Who has to approve a meeting that starts after 4 pm?
+Kernel, the office dog, has to approve a meeting that starts after 4 pm.
+```
 
 `handbook.md` is the handbook of **Biscuit Labs, a made-up company**. It is invented on purpose: no model can know the answers in advance, so a right answer can only come from the handbook.
 
-## Run it (free, on your own computer)
+## The five steps
 
-You need Python 3.9 or newer and [Ollama](https://ollama.com).
-
-```bash
-ollama pull llama3.2
-ollama pull nomic-embed-text
-pip install numpy
-RAG_BACKEND=ollama python rag.py "How long can I book a nap pod for?"
-```
-
-You get two answers: one with the book closed, one with it open.
-
-**Prefer Gemini?** `pip install -r requirements.txt`, set `GEMINI_API_KEY`, then `python rag.py "your question"`. The Ollama path is the one that was run for the video. The Gemini path was written but not run end to end, so open an issue if it trips.
+| Step | In `rag.py` | In plain words |
+|---|---|---|
+| 1. Read + chunk | `text`, `chunks` | Read the file, cut it into chunks, one topic each (25 here) |
+| 2. Embed | `embed`, `vectors` | Turn every chunk into 768 numbers. Similar meaning gets similar numbers |
+| 3. Retrieve | `retrieve` | Turn the question into numbers too, score it against every chunk, keep the top 3 |
+| 4. Answer | `answer` | Paste those chunks into a prompt with one rule: answer only from these |
+| 5. Chat | the `while True` loop | Ask as many questions as you like |
 
 ## Use your own documents
 
-Replace `handbook.md` with your own text file (notes, docs, a policy, a manual) and ask it anything:
+Replace `handbook.md` with your own text file, or change the file name in step 1. Keep a blank line between topics: that blank line is how the file is cut into chunks.
 
-```bash
-RAG_BACKEND=ollama python rag.py "your question"
-```
+## Break it (the experiments from the video)
 
-Keep a blank line between topics. That blank line is how the file is cut into cards.
+Change one thing, run it, and **print what the model was handed**. Add `print(pages)` inside `answer` to see it.
 
-## Break it: the experiments from the video
-
-```bash
-RAG_BACKEND=ollama python run_experiments.py
-```
-
-It asks the same 10 questions (`questions.json`) in 8 set-ups. The run behind the video (Llama 3.2 through Ollama, 29 seconds in total):
-
-| Set-up | Right out of 10 | What happened |
+| Change | What happens | Why |
 |---|---|---|
-| Closed book, no handbook | 0 | Nine "I couldn't find Biscuit Labs", one invented answer ("according to their website... 2 hours") |
-| **RAG: 3 closest cards** | **10** | Every answer correct |
-| Only the 1 closest card | 9 | "Who approves a late meeting?" pulled the Meetings card, not the Kernel card |
-| Cards cut to 40 characters | 4 | Facts get cut in half. "The coffee machine is called 'The coffee machine'." |
-| The 3 least similar cards | 0 | Ten honest "I don't know"s, nothing invented |
-| Handbook cut into 3 giant chunks, 1 used | 7 | The answer is often in a different third |
-| The whole handbook pasted in, no retrieval | 10 | Works, because this handbook is one page |
-| Change "47 days" to "14 days" in the handbook | answer changes | "14 days." with no retraining |
+| `k=3` to `k=1` | "Who has to approve a meeting that starts after 4 pm?" gets "I don't know." | It was handed the Meetings chunk (score 0.71). The Kernel chunk (0.66) was second and got left behind |
+| Chunks of 40 characters | "The coffee machine is called 'The coffee machine'." | The name, Gradient, was cut onto the next piece |
+| Edit `handbook.md`: 47 days to 14 days | The answer changes to "14 days." | Nothing was retrained. The model only reads what you hand it |
 
-Every reply from that run is in `expected-output.txt`.
+Run all of them at once:
 
-### Read this before you draw conclusions
+```bash
+python experiments.py
+```
 
-- **One small model, one small handbook, 10 questions.** These numbers show the idea. They are not a benchmark.
-- **Pasting the whole handbook also scored 10/10.** For one page you do not need RAG. You need it when the book is thousands of pages and will not fit, or would cost too much to send every time. Here the RAG prompt was about 6 times shorter than the whole-handbook prompt.
-- **The marking is automatic and rough.** It looks for key words in the reply. The table above was checked by reading every reply.
-- **Your replies will differ** with another model or version. The pattern is what matters.
+`expected-output.txt` is the output from the run behind the video (Llama 3.2 through Ollama). Your wording may differ with another model or version.
 
-## What a real system adds
+**When RAG fails, print what it retrieved before you blame the model.**
 
-The same five steps, at scale: a vector database for step 3 and 4 (see [`../vector-databases`](../vector-databases)), smarter chunking, re-ranking the retrieved cards, and showing the source next to every answer.
+## An honest note on scale
+
+This build is one page: 25 chunks, kept in memory, embedded again on every run. For one page you could even paste the whole document into the prompt. RAG earns its place when the documents are too big to paste.
+
+Real systems hold millions of chunks. Same steps, three upgrades:
+
+1. **Store the vectors in a vector database**, so you search millions without checking each one. See [`../vector-databases`](../vector-databases).
+2. **Overlap your chunks**, so nothing gets cut in half.
+3. **Re-rank what you retrieve**, so the right page comes first.
+
+## Homework
+
+Point it at a whole folder of your own files, and print which file each answer came from. Hints are in [`HOMEWORK.md`](HOMEWORK.md).
+
+## Also in this folder
+
+`extra-10-question-test/` holds an earlier, larger test: 10 questions asked in 8 set-ups (0/10 with no documents, 10/10 with the 3 closest chunks, 9/10 with 1 chunk, 4/10 with 40-character chunks, and 10/10 with the whole handbook pasted in). It uses a small helper file so it can also run on Gemini; only the Ollama path was run.

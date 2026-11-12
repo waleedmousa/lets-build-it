@@ -1,100 +1,19 @@
-Model: llama3.2   Embeddings: nomic-embed-text   (ollama)   total 29.2s
+NO DOCUMENTS
+   I couldn't find any information on Biscuit Labs, but I found that Biscuit Labs is a company that offers nap pods, and according to their website, the longest nap pod booking is 2 hours.
 
-== closed_book: no handbook at all  ->  0/10 right
-   How many days does a customer have to ask for a refu -> I couldn't find any information on a company called Biscuit Labs, so I'm unable to provide an answer to your question.
-   Who has to approve a meeting that starts after 4 pm? -> I couldn't find any information about Biscuit Labs, so I'm unable to provide an answer.
-   What is the longest I can book a nap pod for?        -> I couldn't find any information on Biscuit Labs, but I found that Biscuit Labs is a company that offers nap pods, and according to their website, the longest nap pod booking is 2 hours.
-   When are we not allowed to deploy to production?     -> I couldn't find any information on a company called Biscuit Labs, so I'm unable to provide an answer to your question.
-   How much is the yearly learning budget?              -> I couldn't find any information on a company called Biscuit Labs, so I'm unable to provide an answer to your question.
-   Which day does everyone come to the office?          -> I couldn't find any information on a company called Biscuit Labs, so I'm not aware of their office hours or policies.
-   A customer's package never arrived. How long do they -> I couldn't find any information on a company called Biscuit Labs, so I'm unable to provide a specific answer to your question.
-   How long is the warranty on the Forever Pot?         -> I couldn't find any information on a company called Biscuit Labs or a product called the Forever Pot, so I'm unable to provide a warranty duration.
-   What is the coffee machine called?                   -> I couldn't find any information on a company called Biscuit Labs, so I'm unable to provide an answer.
-   How much is the bonus for an on-call week?           -> I couldn't find any information about Biscuit Labs, including their bonus structure for on-call weeks.
-
-== open_book: one topic per chunk, top 3  ->  10/10 right
-   How many days does a customer have to ask for a refu -> 47 days.
+RAG, 3 chunks
+   chunks: 25   vectors: (25, 768)
+   What is the longest I can book a nap pod for? -> You can book a nap pod for a maximum of 25 minutes.
    Who has to approve a meeting that starts after 4 pm? -> Kernel, the office dog, has to approve a meeting that starts after 4 pm.
-   What is the longest I can book a nap pod for?        -> You can book a nap pod for a maximum of 25 minutes.
-   When are we not allowed to deploy to production?     -> Nobody deploys to production on Friday after 14:00.
-   How much is the yearly learning budget?              -> The yearly learning budget is $900.
-   Which day does everyone come to the office?          -> Tuesday.
-   A customer's package never arrived. How long do they -> The customer waits 7 working days from the promised date.
-   How long is the warranty on the Forever Pot?         -> 5 years.
-   What is the coffee machine called?                   -> The coffee machine is named Gradient.
-   How much is the bonus for an on-call week?           -> The bonus for an on-call week is $150.
 
-== top_1: one topic per chunk, top 1 only  ->  9/10 right
-   How many days does a customer have to ask for a refu -> 47 days.
+BREAK 1: k = 1
+   handed: ## Meetings
    Who has to approve a meeting that starts after 4 pm? -> I don't know.
-   What is the longest I can book a nap pod for?        -> You can book a nap pod for a maximum of 25 minutes.
-   When are we not allowed to deploy to production?     -> Nobody deploys to production on Friday after 14:00.
-   How much is the yearly learning budget?              -> The yearly learning budget is $900.
-   Which day does everyone come to the office?          -> Tuesday.
-   A customer's package never arrived. How long do they -> 7 working days.
-   How long is the warranty on the Forever Pot?         -> The warranty on the Forever Pot is 5 years.
-   What is the coffee machine called?                   -> The coffee machine is named Gradient.
-   How much is the bonus for an on-call week?           -> The bonus for an on-call week is $150.
 
-== wrong_pages_strict: the 3 LEAST similar chunks, with the 'say I don't know' rule  ->  0/10 right
-   How many days does a customer have to ask for a refu -> I don't know.
-   Who has to approve a meeting that starts after 4 pm? -> I don't know.
-   What is the longest I can book a nap pod for?        -> I don't know.
-   When are we not allowed to deploy to production?     -> I don't know.
-   How much is the yearly learning budget?              -> I don't know.
-   Which day does everyone come to the office?          -> I don't know.
-   A customer's package never arrived. How long do they -> I don't know.
-   How long is the warranty on the Forever Pot?         -> I don't know.
-   What is the coffee machine called?                   -> I don't know.
-   How much is the bonus for an on-call week?           -> I don't know.
+BREAK 2: chunks of 40 characters
+   handed: ['k are silly. ## Coffee The coffee machin', '# Kernel, the office dog Kernel is the o', '# Biscuit Labs Handbook Biscuit Labs is ']
+   What is the coffee machine called? -> The coffee machine is called "The coffee machine".
 
-== wrong_pages_loose: the 3 LEAST similar chunks, without that rule  ->  0/10 right
-   How many days does a customer have to ask for a refu -> There is no information about refunds in the provided handbook pages.
-   Who has to approve a meeting that starts after 4 pm? -> There is no information about meeting approval in the provided handbook pages.
-   What is the longest I can book a nap pod for?        -> There is no information about nap pods in the provided handbook pages.
-   When are we not allowed to deploy to production?     -> There is no information provided in the handbook about when deployment to production is not allowed.
-   How much is the yearly learning budget?              -> There is no mention of a yearly learning budget in the provided handbook pages.
-   Which day does everyone come to the office?          -> There is no mention of office hours or days in the provided handbook pages.
-   A customer's package never arrived. How long do they -> There is no information provided in the handbook about package delivery or reshipment policies.
-   How long is the warranty on the Forever Pot?         -> There is no mention of the Forever Pot in the provided handbook pages.
-   What is the coffee machine called?                   -> There is no mention of the coffee machine in the provided handbook pages.
-   How much is the bonus for an on-call week?           -> There is no mention of a bonus for an on-call week in the provided handbook pages.
-
-== tiny_chunks: chunks of 40 characters, cut anywhere, top 3  ->  4/10 right
-   How many days does a customer have to ask for a refu -> I don't know.
-   Who has to approve a meeting that starts after 4 pm? -> I don't know.
-   What is the longest I can book a nap pod for?        -> I don't know.
-   When are we not allowed to deploy to production?     -> You are not allowed to deploy to production on Friday after 14:00.
-   How much is the yearly learning budget?              -> The yearly learning budget is $900.
-   Which day does everyone come to the office?          -> I don't know.
-   A customer's package never arrived. How long do they -> 7 working days.
-   How long is the warranty on the Forever Pot?         -> I don't know.
-   What is the coffee machine called?                   -> The coffee machine is called "The coffee machine".
-   How much is the bonus for an on-call week?           -> The bonus for an on-call week is $150.
-
-== huge_chunks: the handbook cut into 3 giant chunks, top 1  ->  7/10 right
-   How many days does a customer have to ask for a refu -> 47 days.
-   Who has to approve a meeting that starts after 4 pm? -> Kernel, the office dog, has to approve a meeting that starts after 4 pm.
-   What is the longest I can book a nap pod for?        -> I don't know.
-   When are we not allowed to deploy to production?     -> Nobody deploys to production on Friday after 14:00.
-   How much is the yearly learning budget?              -> The yearly learning budget is $900.
-   Which day does everyone come to the office?          -> Tuesday.
-   A customer's package never arrived. How long do they -> The customer should wait 7 working days from the promised delivery date before we reship the order for free.
-   How long is the warranty on the Forever Pot?         -> 5 years.
-   What is the coffee machine called?                   -> I don't know.
-   How much is the bonus for an on-call week?           -> I don't know.
-
-== whole_book: no retrieval: the whole handbook pasted in  ->  10/10 right
-   How many days does a customer have to ask for a refu -> 47 days.
-   Who has to approve a meeting that starts after 4 pm? -> Kernel, the office dog.
-   What is the longest I can book a nap pod for?        -> You can book a nap pod for a maximum of 25 minutes.
-   When are we not allowed to deploy to production?     -> Nobody deploys to production on Friday after 14:00.
-   How much is the yearly learning budget?              -> 900 dollars.
-   Which day does everyone come to the office?          -> Tuesday.
-   A customer's package never arrived. How long do they -> 7 working days.
-   How long is the warranty on the Forever Pot?         -> 5 years.
-   What is the coffee machine called?                   -> The coffee machine is named Gradient.
-   How much is the bonus for an on-call week?           -> $150.
-
-== update_test: handbook changed (47 days -> 14 days)
-   How many days does a customer have to ask for a refund? -> 14 days.
+EDIT THE DOCUMENT: 47 days becomes 14 days, no retraining
+   before: 47 days.
+   after:  14 days.

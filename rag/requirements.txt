@@ -1,2 +1,2 @@
+ollama
 numpy
-google-genai

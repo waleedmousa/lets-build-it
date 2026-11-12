@@ -8,7 +8,7 @@ Each episode builds one real thing in under 3 minutes. Every folder here holds t
 |---|---|---|
 | Vector Databases | Search that understands meaning, with Chroma | [`vector-databases/`](vector-databases/) |
 | Tiny LLM (EP 10) | A tiny language model in five blocks and 70 lines, then two experiments that break it | [`tiny-llm/`](tiny-llm/) |
-| RAG from scratch (EP 11) | Chat with your own documents in about 30 lines, then break it | [`rag/`](rag/) |
+| RAG from scratch (EP 11) | Chat with your own documents in one 26-line file, break it, then scale it up as homework | [`rag/`](rag/) |
 
 ## How to use this repo
 
