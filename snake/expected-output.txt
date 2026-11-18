@@ -1,0 +1,15 @@
+$ python snake_ai.py
+game 500: average score 0.8
+game 1000: average score 4.9
+game 1500: average score 16.8
+game 2000: average score 17.4
+game 2500: average score 17.2
+game 3000: average score 17.6
+
+$ python snake_ai_v2.py
+game 500: average score 0.8
+game 1000: average score 5.1
+game 1500: average score 30.0
+game 2000: average score 30.9
+game 2500: average score 30.7
+game 3000: average score 30.9

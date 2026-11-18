@@ -10,6 +10,7 @@ Each episode builds one real thing in under 3 minutes. Every folder here holds t
 | Tiny LLM (EP 10) | A tiny language model in five blocks and 70 lines, then two experiments that break it | [`tiny-llm/`](tiny-llm/) |
 | RAG from scratch (EP 11) | Chat with your own documents in one 26-line file, break it, then scale it up as homework | [`rag/`](rag/) |
 | Jev hands-on (EP 12) | Sort a support inbox with typed questions: setup, first call, the trap and the fix | [`jev/`](jev/) |
+| Snake that teaches itself (EP 13) | An AI that learns Snake by itself in about 50 lines and 2 seconds, two ways to break it, and one upgrade | [`snake/`](snake/) |
 
 ## How to use this repo
 
