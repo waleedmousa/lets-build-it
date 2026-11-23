@@ -1,0 +1,44 @@
+$ python birds.py
+generation 1: best bird passed 0
+generation 2: best bird passed 1
+generation 3: best bird passed 4
+generation 4: best bird passed 2
+generation 5: best bird passed 18
+generation 6: best bird passed 373
+generation 7: best bird passed 130
+generation 8: best bird passed 200
+generation 9: best bird passed 206
+generation 10: best bird passed 1000
+
+$ python birds_v2.py
+generation 1: best bird passed 0
+generation 2: best bird passed 1
+generation 3: best bird passed 4
+generation 4: best bird passed 2
+generation 5: best bird passed 18
+generation 6: best bird passed 373
+generation 7: best bird passed 130
+generation 8: best bird passed 200
+generation 9: best bird passed 206
+generation 10: best bird passed 1000
+generation 11: best bird passed 1000
+generation 12: best bird passed 1000
+generation 13: best bird passed 1000
+generation 14: best bird passed 1000
+generation 15: best bird passed 1000
+generation 16: best bird passed 1000
+generation 17: best bird passed 1000
+generation 18: best bird passed 1000
+generation 19: best bird passed 1000
+generation 20: best bird passed 1000
+generation 21: best bird passed 1000
+generation 22: best bird passed 1000
+generation 23: best bird passed 1000
+generation 24: best bird passed 1000
+generation 25: best bird passed 1000
+generation 26: best bird passed 1000
+generation 27: best bird passed 1000
+generation 28: best bird passed 1000
+generation 29: best bird passed 1000
+generation 30: best bird passed 1000
+exam: perfect on 30 of 30 new courses
