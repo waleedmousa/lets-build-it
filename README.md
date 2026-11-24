@@ -13,6 +13,14 @@ Each episode builds one real thing in under 3 minutes. Every folder here holds t
 | Snake that teaches itself (EP 13) | An AI that learns Snake by itself in about 50 lines and 2 seconds, two ways to break it, and one upgrade | [`snake/`](snake/) |
 | 100 birds that learn to fly (EP 14) | A tiny neural network (25 numbers) trained by evolution in about 60 lines, two ways to break it, and an exam | [`birds/`](birds/) |
 
+## Off the Sheet
+
+A second series on the same channel: one box from a cheat sheet, used for real. The cheat sheet is The Python Line Map.
+
+| Episode | The box | Folder |
+|---|---|---|
+| 1. Load a file | Data Analyst line, stop 1: one line, real dates, and scanning a 5-million-row file | [`off-the-sheet/01-load-a-file/`](off-the-sheet/01-load-a-file/) |
+
 ## How to use this repo
 
 1. Pick an episode folder.
