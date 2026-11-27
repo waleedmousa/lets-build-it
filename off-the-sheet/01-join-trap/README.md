@@ -1,4 +1,4 @@
-# Off the Sheet 02 · We set a trap for an AI
+# Off the Sheet 01 · We set a trap for an AI
 
 Two tiny files, one hidden problem, and one line that catches it.
 

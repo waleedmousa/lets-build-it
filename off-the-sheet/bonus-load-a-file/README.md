@@ -1,4 +1,4 @@
-# Off the Sheet, episode 1: I want to load a file
+# Off the Sheet, bonus: I want to load a file
 
 **Cheat sheet:** The Python Line Map, page 7, Data Analyst line, stop 1.
 
