@@ -1,0 +1,7 @@
+order_id,date,region,product,units
+1001,2026-01-05,North,Widget,12
+1002,2026-01-06,South,Gadget,30
+1003,2026-01-06,South,Widget,8
+1004,2026-02-03,East,Widget,18
+1005,2026-02-04,West,Gizmo,10
+1006,2026-02-09,North,Gadget,5

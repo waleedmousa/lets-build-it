@@ -1,0 +1,7 @@
+I have two CSV files.
+
+sales.csv has the columns: order_id, date, region, product, units
+prices.csv has the columns: product, price
+
+Write a short Python script using pandas that joins them and prints the
+total revenue (units times price). Print only the number.

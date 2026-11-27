@@ -21,6 +21,7 @@ A second series on the same channel: one box from a cheat sheet, used for real. 
 | Episode | The box | Folder |
 |---|---|---|
 | 1. Load a file | Data Analyst line, stop 1: one line, real dates, and scanning a 5-million-row file | [`off-the-sheet/01-load-a-file/`](off-the-sheet/01-load-a-file/) |
+| 2. We set a trap for an AI | Data Analyst line, stop 7: a join that silently multiplies rows, and `validate="m:1"`, the one argument that stops it | [`off-the-sheet/02-join-trap/`](off-the-sheet/02-join-trap/) |
 
 ## How to use this repo
 
