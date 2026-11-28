@@ -1,0 +1,6 @@
+count every match          : 116 of 200
+only matches that agree    : 200 of 200
+half a second of sound     : 194 of 200
+a fifth of a second        : 64 of 200
+noise 4x stronger          : 200 of 200
+played 5% faster, no noise : 26 of 200

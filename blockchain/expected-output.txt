@@ -1,0 +1,9 @@
+0 0000a3119697eead lucky=12994   start
+1 0000dcde053ab879 lucky=24675   Ali pays Sara 10
+2 0000addb1c608382 lucky=71744   Sara pays Omar 4
+3 0000113ba0ede9b8 lucky=41881   Omar pays Ali 7
+4 00001cb75cedc001 lucky=27598   Ali pays Omar 2
+check: all good
+after the cheat: BROKEN: block 1 was changed
+after re-mining block 1: BROKEN: block 2 does not link to block 1
+after re-mining everything: all good (0.05 s of work)
