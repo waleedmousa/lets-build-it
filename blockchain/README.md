@@ -1,6 +1,6 @@
 # Let's Build It 17 · A blockchain you can try to rob
 
-A working chain of blocks in 37 lines of Python. No installs.
+A working chain of blocks in 39 lines of Python. No installs.
 
 ## Run it
 
@@ -29,7 +29,7 @@ after re-mining everything: all good (0.05 s of work)
 | Fingerprint | `fingerprint()` | SHA-256 of the block's contents: 64 characters. Change one letter and it all changes. |
 | Mining | `mine()` | Tries lucky numbers until the fingerprint starts with `ZEROS` zeros. |
 | The chain | `add()` | Every new block stores the fingerprint of the block before it. |
-| The check | `check()` | Recomputes every fingerprint and follows the links. |
+| The check | `check()` | Recomputes every fingerprint, demands the required zeros (proof of work), and follows the links. |
 
 Then the script cheats three times: it changes an old payment, re-mines that one
 block, and finally re-mines every block after it.
@@ -52,13 +52,17 @@ Your times will differ, and luck matters: sometimes a block is found early.
 ## Honest notes
 
 - This is the chain itself. Real blockchains add two big things: a network of
-  thousands of computers that each hold a copy and agree on the longest chain,
+  thousands of computers that each hold a copy and agree on the valid chain with the
+  most accumulated proof of work,
   and digital signatures that prove who is allowed to spend.
 - "Starts with N zeros" is a simplification of how Bitcoin states its target, but
   it is the same idea. A recent Bitcoin block (976,124) has a fingerprint that
   starts with 19 zeros.
 - "Over a billion years on my laptop" in the video is my own estimate: 16^19
   tries at about 1.8 million tries per second, for one block.
+- The check refuses a block whose fingerprint does not start with the required zeros,
+  so a cheater cannot just recompute fingerprints and relink the chain. Every
+  rewritten block has to be mined again.
 - On this tiny chain the full cheat takes a fraction of a second. That is the
   point of the mining section: security comes from making that work expensive.
 

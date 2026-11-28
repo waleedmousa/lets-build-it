@@ -21,11 +21,13 @@ def add(chain, data):
     before = chain[-1]["print"] if chain else "0" * 64
     chain.append(mine({"number": len(chain), "data": data, "before": before}))
 
-# 4. THE CHECK: recompute every fingerprint and follow the links
+# 4. THE CHECK: recompute every fingerprint, demand the zeros, follow the links
 def check(chain):
     for block in chain:
         if fingerprint(block) != block["print"]:
             return f"BROKEN: block {block['number']} was changed"
+        if not block["print"].startswith("0" * ZEROS):
+            return f"BROKEN: block {block['number']} has invalid proof of work"
         if block["number"] > 0 and block["before"] != chain[block["number"] - 1]["print"]:
             return f"BROKEN: block {block['number']} does not link to block {block['number'] - 1}"
     return "all good"
